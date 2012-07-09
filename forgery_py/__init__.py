@@ -1,3 +1,4 @@
 # -*- coding: utf-8 -*-
 
-VERSION = "0.1"
+from .forgery import address
+from .forgery import basic
