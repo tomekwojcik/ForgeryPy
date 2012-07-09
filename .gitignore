@@ -1,0 +1,6 @@
+*.pyo
+*.pyc
+*.swp
+.DS_Store
+forgery-py.sublime-project
+forgery-py.sublime-workspace
