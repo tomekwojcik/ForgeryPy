@@ -3,6 +3,7 @@
 import random
 
 from ..dictionaries_loader import get_dictionary
+from .name import first_name
 
 __all__ = [
     'user_name', 'top_level_domain', 'domain_name',
@@ -10,17 +11,8 @@ __all__ = [
 ]
 
 
-def user_name(sex=None, with_num=False):
-    if sex not in ['male', 'female']:
-        sex = None
-
-    if not sex:
-        if random.random() > 0.5:
-            sex = 'male'
-        else:
-            sex = 'female'
-
-    result = random.choice(get_dictionary(sex + '_first_names')).strip()
+def user_name(with_num=False):
+    result = first_name()
     if with_num:
         result += str(random.randint(63, 94))
 
@@ -35,8 +27,13 @@ def domain_name():
 
     return result.lower()
 
-def email_address():
-    return user_name() + '@' + domain_name()
+def email_address(user=None):
+    if not user:
+        user = user_name()
+    else:
+        user = user.strip().replace(' ', '_').lower()
+
+    return user + '@' + domain_name()
 
 def cctld():
     return random.choice(get_dictionary('country_code_top_level_domains')).\
