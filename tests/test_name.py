@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import re
-import string
 from unittest import TestCase
 
 from forgery_py.forgery import name
