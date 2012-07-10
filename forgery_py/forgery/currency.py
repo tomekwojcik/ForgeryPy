@@ -4,7 +4,7 @@ import random
 
 from ..dictionaries_loader import get_dictionary
 
-__all__ = []
+__all__ = ['description', 'code']
 
 
 def description():
