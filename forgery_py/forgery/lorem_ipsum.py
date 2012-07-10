@@ -5,7 +5,10 @@ import re
 
 from ..dictionaries_loader import get_dictionary
 
-__all__ = []
+__all__ = [
+    'words', 'words', 'title', 'sentence',
+    'sentences', 'paragraph', 'paragraphs'
+]
 
 _words = None
 
