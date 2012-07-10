@@ -5,7 +5,10 @@ import string
 
 from ..dictionaries_loader import get_dictionary
 
-__all__ = []
+__all__ = [
+    'street_name', 'street_number', 'street_suffix', 'street_address',
+    'city', 'state', 'state_abbrev', 'zip_code', 'phone', 'country', 'continent'
+]
 
 def street_name():
     return random.choice(get_dictionary('street_names')).strip()
