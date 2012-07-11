@@ -46,9 +46,11 @@ def user_name(with_num=False):
 
     return result.lower()
 
+
 def top_level_domain():
     """Random TLD."""
     return random.choice(get_dictionary('top_level_domains')).strip()
+
 
 def domain_name():
     """
@@ -61,6 +63,7 @@ def domain_name():
     result += '.' + top_level_domain()
 
     return result.lower()
+
 
 def email_address(user=None):
     """
@@ -78,10 +81,12 @@ def email_address(user=None):
 
     return user + '@' + domain_name()
 
+
 def cctld():
     """Random country code TLD."""
     return random.choice(get_dictionary('country_code_top_level_domains')).\
         strip()
+
 
 def ip_v4():
     """Random IPv4 address."""

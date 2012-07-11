@@ -33,9 +33,11 @@ def hex_color():
     """Random HEX color."""
     return ''.join(random.sample(HEX_DIGITS, 6))
 
+
 def hex_color_short():
     """Random short (e.g. `FFF` color)."""
     return ''.join(random.sample(HEX_DIGITS, 3))
+
 
 def text(length=None, at_least=10, at_most=15, lowercase=True,
          uppercase=True, digits=True, spaces=True, punctuation=False):

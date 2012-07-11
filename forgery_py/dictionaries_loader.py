@@ -29,6 +29,7 @@ DICTIONARIES_PATH = abspath(join(dirname(__file__), 'dictionaries'))
 
 dictionaries_cache = {}
 
+
 def get_dictionary(dict_name):
     """
     Load a dictionary file ``dict_name`` (if it's not cached) and return its

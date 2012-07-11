@@ -73,6 +73,7 @@ def job_title():
     result = result.replace('#{N}', job_title_suffix())
     return result
 
+
 def job_title_suffix():
     """Random job title suffix."""
     return random.choice(get_dictionary('job_title_suffixes')).strip()

@@ -38,10 +38,11 @@ def word():
     """Random word."""
     return words(quantity=1)
 
+
 def words(quantity=10, as_list=False):
     """Random words."""
     global _words
-    
+
     if not _words:
         _words = ' '.join(get_dictionary('lorem_ipsum')).lower().\
             replace('\n', '')
@@ -67,15 +68,17 @@ def sentence():
     """Random sentence."""
     return sentences(quantity=1)
 
+
 def sentences(quantity=2, as_list=False):
     """Random sentences."""
-    result = [sntc.strip() for sntc in\
-        random.sample(get_dictionary('lorem_ipsum'), quantity)]
+    result = [sntc.strip() for sntc in
+              random.sample(get_dictionary('lorem_ipsum'), quantity)]
 
     if as_list:
         return result
     else:
         return ' '.join(result)
+
 
 def paragraph(separator='\n\n', wrap_start='', wrap_end='',
               html=False, sentences_quantity=3):
@@ -84,8 +87,9 @@ def paragraph(separator='\n\n', wrap_start='', wrap_end='',
                       wrap_end=wrap_end, html=html,
                       sentences_quantity=sentences_quantity)
 
+
 def paragraphs(quantity=2, separator='\n\n', wrap_start='', wrap_end='',
-               html=False, sentences_quantity=3, as_list=False):    
+               html=False, sentences_quantity=3, as_list=False):
     """Random paragraphs."""
     if html:
         wrap_start = '<p>'
