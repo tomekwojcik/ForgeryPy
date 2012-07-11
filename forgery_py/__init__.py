@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Easy to use generator of various forged data."""
 
 from .forgery import address
 from .forgery import basic
