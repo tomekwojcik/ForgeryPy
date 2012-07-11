@@ -1,1 +1,1 @@
-"""Generate various forger data."""
+"""Generate various forged data."""
