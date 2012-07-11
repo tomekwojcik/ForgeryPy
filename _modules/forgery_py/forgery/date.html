@@ -1,0 +1,191 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>forgery_py.forgery.date &mdash; ForgeryPy 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="ForgeryPy 0.1 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">ForgeryPy 0.1 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for forgery_py.forgery.date</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># Copyright (C) 2012 by Tomasz Wójcik &lt;labs@tomekwojcik.pl&gt;</span>
+<span class="c">#</span>
+<span class="c"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c"># in the Software without restriction, including without limitation the rights</span>
+<span class="c"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c"># furnished to do so, subject to the following conditions:</span>
+<span class="c">#</span>
+<span class="c"># The above copyright notice and this permission notice shall be included in</span>
+<span class="c"># all copies or substantial portions of the Software.</span>
+<span class="c">#</span>
+<span class="c"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+<span class="c"># THE SOFTWARE.</span>
+
+<span class="sd">&quot;&quot;&quot;Generate random date-related data.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">..dictionaries_loader</span> <span class="kn">import</span> <span class="n">get_dictionary</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;day_of_week&#39;</span><span class="p">,</span> <span class="s">&#39;month&#39;</span><span class="p">,</span> <span class="s">&#39;year&#39;</span><span class="p">,</span> <span class="s">&#39;day&#39;</span><span class="p">,</span> <span class="s">&#39;date&#39;</span><span class="p">]</span>
+
+<span class="n">DAYS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;Monday&#39;</span><span class="p">,</span> <span class="s">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s">&#39;Thursday&#39;</span><span class="p">,</span>
+    <span class="s">&#39;Friday&#39;</span><span class="p">,</span> <span class="s">&#39;Saturday&#39;</span><span class="p">,</span> <span class="s">&#39;Sunday&#39;</span>
+<span class="p">]</span>
+
+<span class="n">DAYS_ABBR</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;Mon&#39;</span><span class="p">,</span> <span class="s">&#39;Tue&#39;</span><span class="p">,</span> <span class="s">&#39;Wed&#39;</span><span class="p">,</span> <span class="s">&#39;Thu&#39;</span><span class="p">,</span> <span class="s">&#39;Fri&#39;</span><span class="p">,</span> <span class="s">&#39;Sat&#39;</span>
+<span class="p">]</span>
+
+<span class="n">MONTHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;January&#39;</span><span class="p">,</span> <span class="s">&#39;February&#39;</span><span class="p">,</span> <span class="s">&#39;March&#39;</span><span class="p">,</span> <span class="s">&#39;April&#39;</span><span class="p">,</span>
+    <span class="s">&#39;May&#39;</span><span class="p">,</span> <span class="s">&#39;June&#39;</span><span class="p">,</span> <span class="s">&#39;July&#39;</span><span class="p">,</span> <span class="s">&#39;August&#39;</span><span class="p">,</span>
+    <span class="s">&#39;September&#39;</span><span class="p">,</span> <span class="s">&#39;October&#39;</span><span class="p">,</span> <span class="s">&#39;November&#39;</span><span class="p">,</span> <span class="s">&#39;December&#39;</span>
+<span class="p">]</span>
+
+<span class="n">MONTHS_ABBR</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;Jan&#39;</span><span class="p">,</span> <span class="s">&#39;Feb&#39;</span><span class="p">,</span> <span class="s">&#39;Mar&#39;</span><span class="p">,</span> <span class="s">&#39;Apr&#39;</span><span class="p">,</span>
+    <span class="s">&#39;May&#39;</span><span class="p">,</span> <span class="s">&#39;Jun&#39;</span><span class="p">,</span> <span class="s">&#39;Jul&#39;</span><span class="p">,</span> <span class="s">&#39;Aug&#39;</span><span class="p">,</span>
+    <span class="s">&#39;Sep&#39;</span><span class="p">,</span> <span class="s">&#39;Oct&#39;</span><span class="p">,</span> <span class="s">&#39;Nov&#39;</span><span class="p">,</span> <span class="s">&#39;Dec&#39;</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="day_of_week"><a class="viewcode-back" href="../../../date.html#forgery_py.forgery.date.day_of_week">[docs]</a><span class="k">def</span> <span class="nf">day_of_week</span><span class="p">(</span><span class="n">abbr</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random (abbreviated if `abbr`) day of week name.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">abbr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">DAYS_ABBR</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">DAYS</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="month"><a class="viewcode-back" href="../../../date.html#forgery_py.forgery.date.month">[docs]</a><span class="k">def</span> <span class="nf">month</span><span class="p">(</span><span class="n">abbr</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random (abbreviated if `abbr`) month name or month number if </span>
+<span class="sd">    `numerical`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">numerical</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">abbr</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">MONTHS_ABBR</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">MONTHS</span><span class="p">)</span>
+
+</div>
+<span class="k">def</span> <span class="nf">_delta</span><span class="p">(</span><span class="n">past</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_delta</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">min_delta</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">min_delta</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_delta</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">past</span><span class="p">:</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">delta</span>
+
+
+<div class="viewcode-block" id="year"><a class="viewcode-back" href="../../../date.html#forgery_py.forgery.date.year">[docs]</a><span class="k">def</span> <span class="nf">year</span><span class="p">(</span><span class="n">past</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_delta</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random year.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="n">_delta</span><span class="p">(</span><span class="n">past</span><span class="p">,</span> <span class="n">min_delta</span><span class="p">,</span> <span class="n">max_delta</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="day"><a class="viewcode-back" href="../../../date.html#forgery_py.forgery.date.day">[docs]</a><span class="k">def</span> <span class="nf">day</span><span class="p">(</span><span class="n">month_length</span><span class="o">=</span><span class="mi">31</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random day number in a `month_length` days long month.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">month_length</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="date"><a class="viewcode-back" href="../../../date.html#forgery_py.forgery.date.date">[docs]</a><span class="k">def</span> <span class="nf">date</span><span class="p">(</span><span class="n">past</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_delta</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random `datetime.date` object. Delta args are days.&quot;&quot;&quot;</span>
+    <span class="n">timedelta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">_delta</span><span class="p">(</span><span class="n">past</span><span class="p">,</span> <span class="n">min_delta</span><span class="p">,</span> <span class="n">max_delta</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">ForgeryPy 0.1 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, BTHLabs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

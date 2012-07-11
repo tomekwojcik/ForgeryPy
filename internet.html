@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>internet Module &mdash; ForgeryPy 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ForgeryPy 0.1 documentation" href="index.html" />
+    <link rel="next" title="lorem_ipsum Module" href="lorem_ipsum.html" />
+    <link rel="prev" title="date Module" href="date.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lorem_ipsum.html" title="lorem_ipsum Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="date.html" title="date Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ForgeryPy 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-forgery_py.forgery.internet">
+<span id="internet-module"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">internet</span></tt> Module<a class="headerlink" href="#module-forgery_py.forgery.internet" title="Permalink to this headline">¶</a></h1>
+<p>Generate random date-related data.</p>
+<dl class="function">
+<dt id="forgery_py.forgery.internet.user_name">
+<tt class="descclassname">forgery_py.forgery.internet.</tt><tt class="descname">user_name</tt><big>(</big><em>with_num=False</em><big>)</big><a class="reference internal" href="_modules/forgery_py/forgery/internet.html#user_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#forgery_py.forgery.internet.user_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random user name.</p>
+<p>Basically it&#8217;s lowercased result of 
+<a class="reference internal" href="name.html#forgery_py.forgery.name.first_name" title="forgery_py.forgery.name.first_name"><tt class="xref py py-func docutils literal"><span class="pre">first_name()</span></tt></a> with a number appended 
+if <cite>with_num</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="forgery_py.forgery.internet.top_level_domain">
+<tt class="descclassname">forgery_py.forgery.internet.</tt><tt class="descname">top_level_domain</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/forgery_py/forgery/internet.html#top_level_domain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#forgery_py.forgery.internet.top_level_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random TLD.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="forgery_py.forgery.internet.domain_name">
+<tt class="descclassname">forgery_py.forgery.internet.</tt><tt class="descname">domain_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/forgery_py/forgery/internet.html#domain_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#forgery_py.forgery.internet.domain_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random domain name.</p>
+<p>Lowercased result of <a class="reference internal" href="name.html#forgery_py.forgery.name.company_name" title="forgery_py.forgery.name.company_name"><tt class="xref py py-func docutils literal"><span class="pre">company_name()</span></tt></a> 
+plus <a class="reference internal" href="#forgery_py.forgery.internet.top_level_domain" title="forgery_py.forgery.internet.top_level_domain"><tt class="xref py py-func docutils literal"><span class="pre">top_level_domain()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="forgery_py.forgery.internet.email_address">
+<tt class="descclassname">forgery_py.forgery.internet.</tt><tt class="descname">email_address</tt><big>(</big><em>user=None</em><big>)</big><a class="reference internal" href="_modules/forgery_py/forgery/internet.html#email_address"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#forgery_py.forgery.internet.email_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random e-mail address in a hopefully imaginary domain.</p>
+<p>If <cite>user</cite> is <tt class="docutils literal"><span class="pre">None</span></tt> <a class="reference internal" href="#forgery_py.forgery.internet.user_name" title="forgery_py.forgery.internet.user_name"><tt class="xref py py-func docutils literal"><span class="pre">user_name()</span></tt></a> will be used. Otherwise it 
+will be lowercased and will have spaces replaced with <tt class="docutils literal"><span class="pre">_</span></tt>.</p>
+<p>Domain name is created using <a class="reference internal" href="#forgery_py.forgery.internet.domain_name" title="forgery_py.forgery.internet.domain_name"><tt class="xref py py-func docutils literal"><span class="pre">domain_name()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="forgery_py.forgery.internet.cctld">
+<tt class="descclassname">forgery_py.forgery.internet.</tt><tt class="descname">cctld</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/forgery_py/forgery/internet.html#cctld"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#forgery_py.forgery.internet.cctld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random country code TLD.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="forgery_py.forgery.internet.ip_v4">
+<tt class="descclassname">forgery_py.forgery.internet.</tt><tt class="descname">ip_v4</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/forgery_py/forgery/internet.html#ip_v4"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#forgery_py.forgery.internet.ip_v4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random IPv4 address.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="date.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">date</span></tt> Module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lorem_ipsum.html"
+                        title="next chapter"><tt class="docutils literal"><span class="pre">lorem_ipsum</span></tt> Module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/internet.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lorem_ipsum.html" title="lorem_ipsum Module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="date.html" title="date Module"
+             >previous</a> |</li>
+        <li><a href="index.html">ForgeryPy 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, BTHLabs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
