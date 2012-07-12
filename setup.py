@@ -69,11 +69,11 @@ distutils.core.setup(
             'dictionaries/zones'
         ]
     },
-    author='Tomek Wójcik',
+    author=u'Tomasz Wójcik',
     author_email='labs@tomekwojcik.pl',
-    url='http://github.com/tomekwojcik/ForgeryPy',
+    url='http://tomekwojcik.github.com/ForgeryPy/',
     download_url='http://github.com/tomekwojcik/ForgeryPy/tarball/v%s' % version,
-    description='ForgeryPy is an easy to use forged data generator.',
+    description='An easy to use forged data generator for Python',
     long_description=long_description,
     license='https://github.com/tomekwojcik/ForgeryPy/blob/master/LICENSE',
     classifiers=[
