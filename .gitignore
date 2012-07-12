@@ -6,3 +6,5 @@ forgery-py.sublime-project
 forgery-py.sublime-workspace
 docs/_build/
 build/
+dist/
+MANIFEST

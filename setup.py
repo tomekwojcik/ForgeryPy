@@ -20,9 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+import codecs
 import distutils.core
 
 version = '0.1'
+
+desc_file = codecs.open('README.rst', 'r', 'utf-8')
+long_description = desc_file.read()
+desc_file.close()
 
 distutils.core.setup(
     name="ForgeryPy",
@@ -69,5 +74,15 @@ distutils.core.setup(
     url='http://github.com/tomekwojcik/ForgeryPy',
     download_url='http://github.com/tomekwojcik/ForgeryPy/tarball/v%s' % version,
     description='ForgeryPy is an easy to use forged data generator.',
-    license='https://github.com/tomekwojcik/ForgeryPy/blob/master/LICENSE'
+    long_description=long_description,
+    license='https://github.com/tomekwojcik/ForgeryPy/blob/master/LICENSE',
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Environment :: Other Environment",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Topic :: Software Development :: Libraries :: Python Modules"
+    ]
 )

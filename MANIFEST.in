@@ -1,0 +1,5 @@
+include README.rst
+include LICENSE
+recursive-include docs
+recursive-include tests
+recursive-include forgery_py/dictionaries
